@@ -29,6 +29,7 @@ int main(){
 /*Write a program that reads in the size of an array and the array elements (all of which are integers). The program then computes the sum of all the elements in the given array. Note: If the input is 3 1 4 8, then the array has 3 elements {1, 4, 8}.
 Sample Run:*/
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -55,6 +56,49 @@ int main() {
     printf("\nThe sum of an array is %d \n", sum);
 }
 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// having trouble
+/*Write a program that reads in the size of an array and the array elements (all of which are integers). 
+The program then prints out the minimum and maximum values in the given array.*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    int sizeOfArray=0, sum=0, i=0, temp, max, min;
+    int myArray[sizeOfArray];
+
+    printf("Please enter the size of an array. \n");
+    scanf("%d", &sizeOfArray);
+
+    printf("Please enter positive integers for your array. \n");
+    while (i != sizeOfArray) {
+        scanf("%d", &myArray[i]);
+        i++;
+    }
+
+    // Lining up numbers from small to large
+    int m=i;
+
+
+    while ( m > 0){
+        if (myArray[m] > myArray[m-1]){
+            temp = myArray[m];
+            myArray[m] = myArray[m-1];
+            myArray[m-1] = temp;
+        }
+        printf("myArray[%d] = %d \n", m, myArray[m]);
+        m--;
+    }
+
+    printf("Largest number: %d, Smallest number: %d \n", max, min);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
