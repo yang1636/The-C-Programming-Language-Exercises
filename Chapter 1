@@ -99,7 +99,59 @@ int main() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+/* Write a program that performs the addition of two 3x3 matrices. */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
+
+void inputArray(int i, int j, int array[3][3]){
+    for ( i = 0; i < 3 ; i++) {
+        for ( j = 0; j < 3 ; j++) {
+            scanf("%d", &array[i][j]);
+        }
+    }
+}
+
+void printArray(int i, int j, int array[3][3]){
+    for ( i = 0, j = 0; j < 3 ; j++)
+        printf("%d ", array[i][j]);
+    printf("\n");
+    for ( i = 1, j = 0; j < 3 ; j++)
+        printf("%d ", array[i][j]);
+    printf("\n");
+    for ( i = 2, j = 0; j < 3; j++)
+        printf("%d ", array[i][j]);
+    printf("\n");
+}
+
+void sumArray(int i, int j, int matrix1[3][3], int matrix2[3][3], int sum[3][3]){
+    for ( i = 0; i < 3 ; i++) {
+        for ( j = 0; j < 3 ; j++) {
+            sum[i][j]= matrix1[i][j] + matrix2[i][j];
+        }
+    }
+}
+
+
+int main(){
+    int i, j;
+    int matrix1[3][3], matrix2[3][3], sum[3][3];
+
+    inputArray(i, j, matrix1);
+    inputArray(i, j, matrix2);
+    sumArray(i,j,matrix1,matrix2,sum);
+
+    printArray(i, j, matrix1);
+    printf("\n");
+    printArray(i, j, matrix2);
+    printf("\n");
+    printArray(i, j, sum);
+    printf("\n");
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
