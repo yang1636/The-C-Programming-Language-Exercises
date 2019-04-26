@@ -76,5 +76,77 @@ int main(){
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+
+Define a Rect type for rectangles that are parallel to the x-axis and y-axis in the X-Y Cartesian plane. 
+
+A rectangle is represented by its lower left and upper right endpoints, 
+with the points defined using the Point type in a question above. 
+Using Rect in your program,
+      a. Write a function to compute the area of a rectangle
+      b. Write a function that returns 1 if a point falls within a rectangle, and 0 otherwise. 
+         This function will take in two parameters, a Point variable and a Rect variable.
+      c. Write a main program to test your functions
+
+*/
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
+
+struct rect{
+    double x;
+    double y;
+};
+
+typedef struct rect RectPoint1, RectPoint2;
+
+void enterPoint(RectPoint1 *ptr1, RectPoint2 *ptr2){
+    printf("Please enter a first point x and y\n");
+    scanf("%lf%lf", &ptr1->x, &ptr1->y);
+    printf("Please enter a second point x and y\n");
+    scanf("%lf%lf", &ptr2->x, &ptr2->y);
+}
+
+// compute the area of the rectangle
+double calculateDistance(RectPoint1 *ptr1, RectPoint2 *ptr2, double area){
+    area = sqrt(pow((ptr1->x - ptr2->x),2)) * sqrt(pow((ptr1->y - ptr2->y),2));
+    return area;
+}
+
+bool isRect(RectPoint1 *ptr1, RectPoint2 *ptr2){
+    if (((fabs(ptr1->x - ptr2->x)<= 1.0e-6)) || (fabs(ptr1->y - ptr2->y) <= 1.0e-6)){
+            return 0;
+        }
+    return 1;
+}
+
+int main(){
+
+    RectPoint1 *ptr1 = malloc(30* sizeof(double));
+    RectPoint2 *ptr2 = malloc(30* sizeof(double));
+
+    double distance = 0.0;
+
+    enterPoint(ptr1, ptr2);
+    calculateDistance(ptr1, ptr2, distance);
+
+    printf("\n\nDistance between 2 points is: %lf \n", calculateDistance(ptr1,ptr2,distance));
+
+    if (isRect(ptr1, ptr2) == 0)
+        printf("It is not a rectangle \n");
+    else
+        printf("It is a rectangle \n");
+    
+    free(ptr1);
+    free(ptr2);
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
