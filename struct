@@ -1,0 +1,80 @@
+/*
+Given a structure that stores the x and y coordinates for a point on the X-Y Cartesian plane:
+      
+      struct point {
+        double x;
+        double y; };
+      typedef struct point Point;
+      
+Use the struct in your program to
+    a. Write a function to compute the Euclidean distance between two points
+    b. Write a function that returns 1 if the two points are “equal”, and 0 otherwise. 
+        Since the x and y coordinates are floating point values, 
+        use a tolerance value of 0.000001 in your comparison
+    c. Write a main program to test your functions
+    
+*/
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
+
+struct point{
+    double x;
+    double y;
+};
+
+typedef struct point Point1, Point2;
+
+void enterPoint(Point1 *ptr1, Point2 *ptr2){
+    printf("Please enter a first point x and y\n");
+    scanf("%lf%lf", &ptr1->x, &ptr1->y);
+    printf("Please enter a second point x and y\n");
+    scanf("%lf%lf", &ptr2->x, &ptr2->y);
+}
+
+// compute the Euclidean distance between two points
+double calculateDistance(Point1 *ptr1, Point2 *ptr2, double distance){
+    distance = sqrt((pow((ptr1->x - ptr2->x),2)) + (pow((ptr1->y - ptr2->y),2)));
+    return distance;
+}
+
+bool isEqual(Point1 *ptr1, Point2 *ptr2){
+    if (((fabs(ptr1->x - ptr2->x)<= 1.0e-6)) && (fabs(ptr1->y - ptr2->y) <= 1.0e-6)){
+            return 1;
+        }
+    return 0;
+}
+
+int main(){
+
+    Point1 *ptr1 = malloc(30* sizeof(double));
+    Point2 *ptr2 = malloc(30* sizeof(double));
+
+    double distance = 0.0;
+
+    enterPoint(ptr1, ptr2);
+    calculateDistance(ptr1, ptr2, distance);
+
+    printf("\n\nDistance between 2 points is: %lf \n", calculateDistance(ptr1,ptr2,distance));
+
+
+    if (isEqual(ptr1, ptr2) == 1)
+        printf("Both pointers are equal \n");
+    else
+        printf("Both pointers are not equal \n");
+
+
+    free(ptr1);
+    free(ptr2);
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
