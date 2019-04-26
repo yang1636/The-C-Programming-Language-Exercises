@@ -149,4 +149,68 @@ int main(){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// add 2 fractions
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
+
+struct fract{
+    int numerator;
+    int denominator;
+};
+
+typedef struct fract Fraction1, Fraction2, Sum;
+
+void enterFraction(Fraction1 *ptr1, Fraction2 *ptr2){
+    printf("Please enter numerator, denomiator of a first fraction. \n");
+    scanf("%d%d", &ptr1->numerator, &ptr1->denominator);
+    printf("Please enter numerator, denomiator of a second fraction. \n");
+    scanf("%d%d", &ptr2->numerator, &ptr2->denominator);
+}
+
+// compute two fractions
+struct fract addFractions(Fraction1 *ptr1, Fraction1 *ptr2, Sum *ptr3, int numerator, int denominator){
+    if (ptr1->denominator == ptr2->denominator){
+        numerator = ptr1->numerator + ptr2->numerator;
+        denominator = ptr1->denominator;
+    } else {
+        numerator = ((ptr2->denominator) * (ptr1->numerator)) + ((ptr1->denominator) * (ptr2->numerator));
+        denominator = ptr1->denominator * ptr2->denominator;
+    }
+
+    ptr3->numerator=numerator;
+    ptr3->denominator=denominator;
+
+    return *ptr3;
+}
+
+
+int main(){
+
+    Fraction1 *ptr1 = malloc(30* sizeof(int));
+    Fraction2 *ptr2 = malloc(30* sizeof(int));
+    Sum *ptr3 = malloc(30* sizeof(int));
+    int numerator=0, denominator=0;
+
+
+    enterFraction(ptr1, ptr2);
+    addFractions(ptr1, ptr2, ptr3, numerator, denominator);
+
+
+    printf("\n%d\t \t%d\t \t%d\n", ptr1->numerator, ptr2->numerator, ptr3->numerator);
+    printf("-\t+\t-\t=\t-\n");
+    printf("%d\t \t%d\t \t%d\n", ptr1->denominator, ptr2->denominator, ptr3->denominator);
+
+    free(ptr1);
+    free(ptr2);
+    free(ptr3);
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
