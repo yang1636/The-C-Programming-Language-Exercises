@@ -58,9 +58,6 @@ int main(){
     enterPoint(ptr1, ptr2);
     calculateDistance(ptr1, ptr2);
 
-    printf("\n\nDistance between 2 points is: %lf \n", calculateDistance(ptr1,ptr2));
-
-
     if (isEqual(ptr1, ptr2) == 1)
         printf("Both pointers are equal \n");
     else
